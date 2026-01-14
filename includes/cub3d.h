@@ -6,7 +6,7 @@
 /*   By: ajami <ajami@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 06:40:26 by ajami             #+#    #+#             */
-/*   Updated: 2026/01/12 17:32:58 by ajami            ###   ########.fr       */
+/*   Updated: 2026/01/14 11:40:03 by ajami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	allocate_map(t_data *data);
 void	init_struct(t_data *data, t_game *game, t_assets *assets);
 void	count_lines(int fd, t_data *data);
 void	fill_map(int fd, t_data *data);
-void	read_stockage(int fd, t_data *data);
+int		read_stockage(char **av, int fd, t_data *data);
+void    read_map(t_data *data);
 
 /*CHECK MAP*/
 

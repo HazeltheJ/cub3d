@@ -6,7 +6,7 @@
 /*   By: ajami <ajami@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:06:27 by ajami             #+#    #+#             */
-/*   Updated: 2026/01/12 17:56:28 by ajami            ###   ########.fr       */
+/*   Updated: 2026/01/14 14:03:35 by ajami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	count_lines(int fd, t_data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
 		data->game.height++;
 	}
 	if (!line)
 		get_next_line(-1);
+	close(fd);
 }
 
 void	allocate_map(t_data *data)
@@ -71,12 +71,14 @@ void	fill_map(int fd, t_data *data)
 
 	i = 0;
 	line = get_next_line(fd);
-	ft_printf("ici");
+	if (!line)
+		ft_printf("ici probleme");
 	while (line)
 	{
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		data->game.map[i] = ft_strdup(line);
+		//ft_printf("%s\n", line);
 		if (!data->game.map[i])
 		{
 			perror("Error\n  Can't allocate memory");
